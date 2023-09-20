@@ -23,11 +23,11 @@ async function handler(req, res) {
     };
 
     let client;
+    let connectionUrl = 'mongodb+srv://admin:admin1234@cluster0.mtwgsew.mongodb.net/my-site?retryWrites=true&w=majority';
+    // 'mongodb+srv://maximilian:2YkcXq43KyPk0vqp@cluster0.ntrwp.mongodb.net/my-site?retryWrites=true&w=majority'
 
     try {
-      client = await MongoClient.connect(
-        'mongodb+srv://maximilian:2YkcXq43KyPk0vqp@cluster0.ntrwp.mongodb.net/my-site?retryWrites=true&w=majority'
-      );
+      client = await MongoClient.connect(connectionUrl);
     } catch (error) {
       res.status(500).json({ message: 'Could not connect to database.' });
       return;
